@@ -12,6 +12,7 @@ function App() {
     const [isLoading, setIsLoading] = useState(false);
     const [urlDownload, setUrlDownload] = useState('');
     const [error, setError] = useState('');
+    const [linksOpen, setLinksOpen] = useState(false);
     const downloadButton = useRef(null);
 
     useEffect(() => {
@@ -25,6 +26,7 @@ function App() {
                 setError(translate(data.error));
             } else {
                 setUrlDownload(`${data.url}&dl=1`);
+                setError('');
             }
 
             setIsLoading(false);
@@ -39,25 +41,28 @@ function App() {
 
     return (
         <>
-            <div className='bg-zinc-100 dark:bg-zinc-800 min-h-screen flex flex-col items-center justify-center'>
-                <div className='pb-10 font-bold dark:text-slate-100 text-center'>
-                    <h1 className='text-3xl'>Social Videos Downloader</h1>
-                    <p className='font-thin'>{translate('PAGE_DESCRIPTION')}</p>
-                </div>
-                <div className='p-3 w-3/4'>
-                    <Search search={search} setSearch={setSearch} error={error} />
-                </div>
-                <div className='p-3'>
+            <div className='bg-blue-400 dark:bg-stone-700 flex flex-col items-center justify-center min-h-screen'>
+                <div className='bg-stone-100 dark:bg-stone-800 flex flex-col items-center justify-center min-h-max p-20 rounded-2xl drop-shadow-xl'>
+                    <div className='pb-10 font-bold dark:text-slate-100 text-center mx-5'>
+                        <h1 className='text-3xl'>Social Videos Downloader</h1>
+                        <p className='font-thin'>{translate('PAGE_DESCRIPTION')}</p>
+                    </div>
+                    <div className='p-3 w-full'>
+                        <Search search={search} setSearch={setSearch} error={error} />
+                    </div>
                     {urlDownload.length > 0
-                        ? <a
-                            href={urlDownload}
-                            download={search}
-                            target='_blank'
-                            ref={downloadButton}
-                            className="bg-green-500 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                        >
-                            {translate('RE_DOWNLOAD')}
-                        </a>
+                        ?
+                        <div className='p-3'>
+                            <a
+                                href={urlDownload}
+                                download={search}
+                                target='_blank'
+                                ref={downloadButton}
+                                className="bg-green-500 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                            >
+                                {translate('RE_DOWNLOAD')}
+                            </a>
+                        </div>
                         : null
                     }
                 </div>
