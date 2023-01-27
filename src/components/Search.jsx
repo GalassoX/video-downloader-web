@@ -1,7 +1,7 @@
 import translate from "../translate";
 import ButtonBlue from "./Buttons/Blue";
 
-export default function Search({ search, setSearch }) {
+export default function Search({ search, setSearch, error }) {
 
     const onFormSubmit = (e) => {
         e.preventDefault();
@@ -13,15 +13,15 @@ export default function Search({ search, setSearch }) {
     return (
         <>
             <form onSubmit={onFormSubmit}>
-                <div className='p-3'>
+                <div className='p-3 text-center'>
                     <input
                         type="text"
                         name="query"
                         placeholder={translate('COPY_LINK')}
-                        className='block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 text-2xl sm:text-xl outline-none p-2'
+                        className='px-10 block w-full rounded-md border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 text-2xl sm:text-xl outline-none p-2'
                     />
+                    {!error ? null : <p className='text-red-600'>{error}</p>}
                 </div>
-                {/* <button type="submit">Buscar y descargar</button> */}
                 <div className='p-3 text-center'>
                     <ButtonBlue>{translate('SEARCH_AND_DOWNLOAD')}</ButtonBlue>
                 </div>

@@ -3,5 +3,7 @@
     "RE_DOWNLOAD": "Volver a descargar",
     "GENERATING_VIDEO": "Generando vídeo...",
     "SEARCH_AND_DOWNLOAD": "Buscar y descargar",
-    "COPY_LINK": "Copia el link aquí"
+    "COPY_LINK": "Copia el link aquí",
+    "INVALID_LINK": "Link inválido, coloca uno válido",
+    "ERR_GENERATING_VID": "Ocurrió un error generando el vídeo, coloca un link correcto o intentalo más tarde"
 }

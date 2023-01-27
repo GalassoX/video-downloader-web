@@ -11,6 +11,7 @@ function App() {
     const [search, setSearch] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [urlDownload, setUrlDownload] = useState('');
+    const [error, setError] = useState('');
     const downloadButton = useRef(null);
 
     useEffect(() => {
@@ -18,8 +19,13 @@ function App() {
         async function fetching() {
             setIsLoading(true);
             const data = await fetchVideo(search);
-            console.log(data.url)
-            setUrlDownload(`${data.url}&dl=1`);
+            if (!data) {
+                setError(translate('INVALID_LINK'))
+            } else if (data.error) {
+                setError(translate(data.error));
+            } else {
+                setUrlDownload(`${data.url}&dl=1`);
+            }
 
             setIsLoading(false);
         }
@@ -39,7 +45,7 @@ function App() {
                     <p className='font-thin'>{translate('PAGE_DESCRIPTION')}</p>
                 </div>
                 <div className='p-3 w-3/4'>
-                    <Search search={search} setSearch={setSearch} />
+                    <Search search={search} setSearch={setSearch} error={error} />
                 </div>
                 <div className='p-3'>
                     {urlDownload.length > 0
