@@ -1,3 +1,4 @@
+import translate from "../translate";
 import ButtonBlue from "./Buttons/Blue";
 
 export default function Search({ search, setSearch }) {
@@ -16,13 +17,13 @@ export default function Search({ search, setSearch }) {
                     <input
                         type="text"
                         name="query"
-                        placeholder='Coloca el link aquí'
+                        placeholder={translate('COPY_LINK')}
                         className='block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 text-2xl sm:text-xl outline-none p-2'
                     />
                 </div>
                 {/* <button type="submit">Buscar y descargar</button> */}
                 <div className='p-3 text-center'>
-                    <ButtonBlue>Buscar y descargar</ButtonBlue>
+                    <ButtonBlue>{translate('SEARCH_AND_DOWNLOAD')}</ButtonBlue>
                 </div>
             </form>
         </>

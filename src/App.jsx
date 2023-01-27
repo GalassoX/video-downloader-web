@@ -4,6 +4,7 @@ import Modal from './components/Modal/Modal';
 import Search from './components/Search'
 import { fetchVideo } from './services/videos';
 import './index.css'
+import translate from './translate';
 
 function App() {
 
@@ -35,7 +36,7 @@ function App() {
             <div className='bg-zinc-100 dark:bg-zinc-800 min-h-screen flex flex-col items-center justify-center'>
                 <div className='pb-10 font-bold dark:text-slate-100 text-center'>
                     <h1 className='text-3xl'>Social Videos Downloader</h1>
-                    <p className='font-thin'>Descarga algún vídeo o meme que quieras, solo tienes que colocar el link y ya!</p>
+                    <p className='font-thin'>{translate('PAGE_DESCRIPTION')}</p>
                 </div>
                 <div className='p-3 w-3/4'>
                     <Search search={search} setSearch={setSearch} />
@@ -49,7 +50,7 @@ function App() {
                             ref={downloadButton}
                             className="bg-green-500 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                         >
-                            Volver a descargar
+                            {translate('RE_DOWNLOAD')}
                         </a>
                         : null
                     }
@@ -57,7 +58,7 @@ function App() {
                 <Modal
                     open={isLoading}
                     setOpen={() => { }}
-                    body={<Loading text={'Generando video...'} />}
+                    body={<Loading text={translate('GENERATING_VIDEO')} />}
                 />
             </div>
         </>
