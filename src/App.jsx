@@ -5,6 +5,9 @@ import Search from './components/Search'
 import { fetchVideo } from './services/videos';
 import './index.css'
 import translate from './translate';
+import ButtonRed from './components/Buttons/Red';
+
+const socials = ['Facebook', 'Instagram'];
 
 function App() {
 
@@ -41,7 +44,7 @@ function App() {
 
     return (
         <>
-            <div className='bg-blue-400 dark:bg-stone-700 flex flex-col items-center justify-center min-h-screen'>
+            <div className='bg-blue-400 dark:bg-stone-700 text-black dark:text-white flex flex-col items-center justify-center min-h-screen'>
                 <div className='bg-stone-100 dark:bg-stone-800 flex flex-col items-center justify-center min-h-max p-20 rounded-2xl drop-shadow-xl'>
                     <div className='pb-10 font-bold dark:text-slate-100 text-center mx-5'>
                         <h1 className='text-3xl'>Social Videos Downloader</h1>
@@ -65,11 +68,27 @@ function App() {
                         </div>
                         : null
                     }
+                    <div className='pt-10'>
+                        <ButtonRed onClick={() => setLinksOpen(true)}>{translate('SEE_LINKS')}</ButtonRed>
+                    </div>
                 </div>
                 <Modal
                     open={isLoading}
                     setOpen={() => { }}
                     body={<Loading text={translate('GENERATING_VIDEO')} />}
+                />
+                <Modal
+                    open={linksOpen}
+                    onClose={() => setLinksOpen(false)}
+                    title='Links'
+                    body={
+                        <>
+                            <p>{translate('LINKS_AVAILABLE')}</p>
+                            <ul className='list-disc list-inside m-5'>
+                                {socials.map(social => <li key={social}>{social}</li>)}
+                            </ul>
+                        </>
+                    }
                 />
             </div>
         </>

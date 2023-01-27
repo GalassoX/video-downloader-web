@@ -5,5 +5,7 @@
     "SEARCH_AND_DOWNLOAD": "Buscar y descargar",
     "COPY_LINK": "Copia el link aquí",
     "INVALID_LINK": "Link inválido, coloca uno válido",
-    "ERR_GENERATING_VID": "Ocurrió un error generando el vídeo, coloca un link correcto o intentalo más tarde"
+    "ERR_GENERATING_VID": "Ocurrió un error generando el vídeo, coloca un link correcto o intentalo más tarde",
+    "SEE_LINKS": "Ver links",
+    "LINKS_AVAILABLE": "Se admiten links de las siguientes redes sociales"
 }
