@@ -1,6 +1,14 @@
 export const fetchVideo = async (video_url) => {
     const url = new URL('https://downloader-api.galasso.workers.dev/');
-    const video = new URL(video_url);
+
+    let video;
+
+    try {
+        video = new URL(video_url);
+    }
+    catch (e) {
+        return null;
+    }
 
     const hosts = ['facebook', 'instagram'];
     const idx = hosts.findIndex((host) => host === video.host.split('.')[1]);
@@ -19,5 +27,5 @@ export const fetchVideo = async (video_url) => {
         } else {
             return { url: json.url }
         }
-    } else return { error: 'El video no se pudo generar' };
+    } else return { error: 'ERR_GENERATING_VID' };
 }
