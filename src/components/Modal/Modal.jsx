@@ -7,7 +7,7 @@ const Modal = ({ open, onClose, title, body, buttons }) => {
             >
                 <div className="relative w-auto my-6 mx-auto max-w-3xl">
                     {/*content*/}
-                    <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none items-center">
+                    <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none items-center text-black">
                         {/*header*/}
                         {!title
                             ? null
